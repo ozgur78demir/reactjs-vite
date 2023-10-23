@@ -49,5 +49,5 @@ jobs:
           compress: false                            # Compression
           forceUpload: false                         # Optional, Force uploading all files, Default to false(upload only newer files).
           localDir: 'dist'                           # Required, Absolute or relative to cwd.
-          remoteDir: '/home/www/test/'               # Required, Absolute path only.
+          remoteDir: '/home/www/test/'               # Required, Absolute path only. 
           exclude: 'node_modules/,.git*,.DS_Store'   # Optional. exclude patterns (glob) like .gitignore, use ',' to split, Default to ''.
