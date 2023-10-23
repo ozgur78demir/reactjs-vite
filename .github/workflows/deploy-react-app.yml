@@ -6,7 +6,7 @@ on:
       - main # branch name
 
 jobs:
-  deploy-react-to-gh-pages:
+  deploy-react-to-ftp:
     runs-on: ubuntu-latest
     env:
       EXAMPLE: test # environment variable
@@ -46,4 +46,4 @@ jobs:
           ftp-server: ${{ secrets.FTP_SERVER }}
           ftp-username: ${{ secrets.FTP_USERNAME }}
           ftp-password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: toupload
+          local-dir: test
