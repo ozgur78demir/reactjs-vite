@@ -40,13 +40,15 @@ jobs:
         run: npm run build
 
       # deploy the react app to github pages
-      - name: Deploy
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      - name: SFTP uploader                       # Upload to SFTP 
+        uses: wangyucode/sftp-upload-action@v2.0.2
         with:
-          ftp-server: ${{ secrets.FTP_SERVER }}
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
-          METHOD: sftp
-          PORT: 22
-          local-dir: ./dist/
-          server-dir: /home/www/test/
+          host: ${{ secrets.FTP_SERVER }}                  # Recommended to put the credentials in github secrets.
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          compress: true                             # Compression
+          forceUpload: true                          # Optional, Force uploading all files, Default to false(upload only newer files).
+          localDir: 'dist'                           # Required, Absolute or relative to cwd.
+          remoteDir: '/home/www/test/'               # Required, Absolute path only.
+          exclude: 'node_modules/,.git*,.DS_Store'   # Optional. exclude patterns (glob) like .gitignore, use ',' to split, Default to ''.
+          
